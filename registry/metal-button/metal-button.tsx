@@ -75,19 +75,25 @@ export const MetalButton = React.forwardRef<
 >(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
 
+  // Set name to "button" if not provided
+  const buttonProps = {
+    ...props,
+    name: props.name || "button",
+  };
+
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsPressed(true);
-    props.onMouseDown?.(e);
+    buttonProps.onMouseDown?.(e);
   };
 
   const handleMouseUp = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsPressed(false);
-    props.onMouseUp?.(e);
+    buttonProps.onMouseUp?.(e);
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsPressed(false);
-    props.onMouseLeave?.(e);
+    buttonProps.onMouseLeave?.(e);
   };
 
   const ShineEffect = () => {
@@ -151,7 +157,7 @@ export const MetalButton = React.forwardRef<
           colors.textShadow,
           className,
         )}
-        {...props}
+        {...buttonProps}
         style={{
           transform: isPressed ? "scale(0.97)" : "scale(1)",
           transition: transitionStyle,
