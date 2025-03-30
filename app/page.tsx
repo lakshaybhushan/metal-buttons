@@ -2,7 +2,7 @@ import { CodeBlockCommand } from "@/components/ui/code-block-command";
 import { bunCommand, npmCommand, pnpmCommand, yarnCommand } from "@/lib/utils";
 import { MetalButton } from "@/registry/metal-button/metal-button";
 import { OpenInV0Button } from "@/components/ui/open-in-v0";
-import { URL } from "@/lib/utils";
+import { EXAMPLE_URL } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <section className="mt-2 flex max-w-2xl flex-col">
         <div className="mt-4 relative flex min-h-[350px] w-full items-center justify-center rounded-xl border-2 p-10">
           <div className="absolute right-0 top-0 m-4">
-            <OpenInV0Button url={URL} />
+            <OpenInV0Button url={EXAMPLE_URL} />
           </div>
 
           <MetalButton variant="default" className="w-fit">

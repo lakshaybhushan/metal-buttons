@@ -7,7 +7,9 @@ export function cn(...inputs: ClassValue[]) {
 
 const SITE = "https://button.lakshb.dev";
 const REGISTRY_JSON = "metal-button.json";
+const EXAMPLE_JSON = "metal-button-demo.json";
 export const URL = `${SITE}/r/${REGISTRY_JSON}`;
+export const EXAMPLE_URL = `${SITE}/r/${EXAMPLE_JSON}`;
 
 export const npmCommand = `npx shadcn@latest add "${URL}"`;
 export const yarnCommand = `npx shadcn@latest add "${URL}"`;

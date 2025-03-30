@@ -12,7 +12,8 @@
       "files": [
         {
           "path": "registry/metal-button/metal-button.tsx",
-          "type": "registry:ui"
+          "type": "registry:ui",
+          "target": "components/metal-button.tsx"
         }
       ]
     },
