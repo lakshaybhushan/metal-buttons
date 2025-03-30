@@ -2,13 +2,77 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
+type ColorVariant =
+  | "default"
+  | "primary"
+  | "success"
+  | "error"
+  | "gold"
+  | "bronze";
+
 interface MetalButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ColorVariant;
+}
+
+const colorVariants: Record<
+  ColorVariant,
+  {
+    outer: string;
+    inner: string;
+    button: string;
+    textColor: string;
+    textShadow: string;
+  }
+> = {
+  default: {
+    outer: "bg-gradient-to-t from-[#A0A0A0] to-[#000]",
+    inner: "bg-gradient-to-b from-[#FAFAFA] via-[#3E3E3E] to-[#E5E5E5]",
+    button: "bg-linear-to-b from-[#B9B9B9] to-[#969696]",
+    textColor: "text-white",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(80_80_80_/_100%)]",
+  },
+  primary: {
+    outer: "bg-gradient-to-t from-[#90C2FF] to-[#0051B4]",
+    inner: "bg-gradient-to-b from-[#D5F1FF] via-[#006AFF] to-[#CBF4FF]",
+    button: "bg-linear-to-b from-[#0080FF] to-[#7BC6FF]",
+    textColor: "text-[#FFF7F0]",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
+  },
+  success: {
+    outer: "bg-gradient-to-t from-[#7CCB9B] to-[#005A43]",
+    inner: "bg-gradient-to-b from-[#C3FFE6] via-[#006056] to-[#8CFFDB]",
+    button: "bg-linear-to-b from-[#009472] to-[#50C2A0]",
+    textColor: "text-[#FFF7F0]",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(6_78_59_/_100%)]",
+  },
+  error: {
+    outer: "bg-gradient-to-t from-[#FF8E90] to-[#5A0000]",
+    inner: "bg-gradient-to-b from-[#FFDEDE] via-[#A00003] to-[#FFAFAF]",
+    button: "bg-linear-to-b from-[#DD0E11] to-[#CD4C4E]",
+    textColor: "text-[#FFF7F0]",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(146_64_14_/_100%)]",
+  },
+  gold: {
+    outer: "bg-gradient-to-t from-[#D9B100] to-[#D7B700]",
+    inner: "bg-gradient-to-b from-[#FFF9AA] via-[#D5A300] to-[#FFD000]",
+    button: "bg-linear-to-b from-[#E1B000] to-[#FFDE67]",
+    textColor: "text-white",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(178_140_2_/_100%)]",
+  },
+  bronze: {
+    outer: "bg-gradient-to-t from-[#FFB777] to-[#7F3C01]",
+    inner: "bg-gradient-to-b from-[#FFDEC1] via-[#8F4300] to-[#FFA95D]",
+    button: "bg-linear-to-b from-[#B25700] to-[#FFBC7B]",
+    textColor: "text-[#FFF7F0]",
+    textShadow: "[text-shadow:_0_-1px_0_rgb(124_45_18_/_100%)]",
+  },
+};
 
 export const MetalButton = React.forwardRef<
   HTMLButtonElement,
   MetalButtonProps
->(({ children, className, ...props }, ref) => {
+>(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,8 +94,8 @@ export const MetalButton = React.forwardRef<
     return (
       <div
         className={cn(
-          "absolute inset-0 rounded-full overflow-hidden transition-opacity duration-300 pointer-events-none z-20",
-          isPressed ? "opacity-20" : "opacity-0"
+          "pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-full transition-opacity duration-300",
+          isPressed ? "opacity-20" : "opacity-0",
         )}
       >
         <div
@@ -48,12 +112,13 @@ export const MetalButton = React.forwardRef<
   };
 
   const transitionStyle = "all 250ms cubic-bezier(0.1, 0.4, 0.2, 1)";
+  const colors = colorVariants[variant];
 
   return (
     <div
       className={cn(
-        "inline-flex rounded-full relative bg-gradient-to-t from-[#A0A0A0] to-[#000] p-[1.25px]",
-        "transform-gpu will-change-transform"
+        "relative inline-flex transform-gpu rounded-full p-[1.25px] will-change-transform",
+        colors.outer,
       )}
       style={{
         transform: isPressed
@@ -68,8 +133,8 @@ export const MetalButton = React.forwardRef<
     >
       <div
         className={cn(
-          "absolute inset-[1px] rounded-full bg-gradient-to-b from-[#FAFAFA] via-[#3E3E3E] to-[#E5E5E5]",
-          "transform-gpu will-change-transform"
+          "absolute inset-[1px] transform-gpu rounded-full will-change-transform",
+          colors.inner,
         )}
         style={{
           transition: transitionStyle,
@@ -80,9 +145,11 @@ export const MetalButton = React.forwardRef<
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-full font-bold relative z-10 leading-none cursor-pointer outline-none text-[#FFF] bg-linear-to-b from-[#B9B9B9] to-[#969696] h-11 p-6 m-[4px] text-2xl [text-shadow:_0_-1px_0_rgb(80_80_80_/_100%)] overflow-hidden",
-          "transform-gpu will-change-transform",
-          className
+          "relative z-10 m-[2.5px] inline-flex h-11 transform-gpu cursor-pointer items-center justify-center overflow-hidden rounded-full p-6 text-2xl leading-none font-bold will-change-transform outline-none",
+          colors.button,
+          colors.textColor,
+          colors.textShadow,
+          className,
         )}
         {...props}
         style={{
