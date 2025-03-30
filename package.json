@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
@@ -16,6 +17,7 @@
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "shadcn": "^2.4.0-canary.20",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.5"
   },

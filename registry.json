@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "lakssh",
+  "homepage": "https://button.lakshb.dev",
+  "items": [
+    {
+      "name": "metal-button",
+      "type": "registry:component",
+      "title": "Metal Button",
+      "description": "A shadcn/ui based button but it's made of metal",
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/metal-button/metal-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
