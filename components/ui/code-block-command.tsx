@@ -43,13 +43,7 @@ export function CodeBlockCommand({
       return;
     }
 
-    copyToClipboardWithMeta(command, {
-      name: "copy_npm_command",
-      properties: {
-        command,
-        pm: packageManager,
-      },
-    });
+    copyToClipboardWithMeta(command);
     setHasCopied(true);
   }, [packageManager, tabs]);
 
@@ -71,6 +65,7 @@ export function CodeBlockCommand({
       >
         <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5">
           <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1">
+            {/* @eslint-disable-next-line */}
             {Object.entries(tabs).map(([key, value]) => {
               return (
                 <TabsTrigger
