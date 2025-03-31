@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+::selection {
+  @apply bg-blue-600 text-white;
+}
+
+.dark ::selection {
+  @apply bg-blue-600 text-white;
+}

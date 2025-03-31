@@ -75,7 +75,6 @@ export const MetalButton = React.forwardRef<
 >(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
 
-  // Set name to "button" if not provided
   const buttonProps = {
     ...props,
     name: props.name || "button",
@@ -94,6 +93,21 @@ export const MetalButton = React.forwardRef<
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsPressed(false);
     buttonProps.onMouseLeave?.(e);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(true);
+    buttonProps.onTouchStart?.(e);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(false);
+    buttonProps.onTouchEnd?.(e);
+  };
+
+  const handleTouchCancel = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(false);
+    buttonProps.onTouchCancel?.(e);
   };
 
   const ShineEffect = () => {
@@ -166,6 +180,9 @@ export const MetalButton = React.forwardRef<
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
       >
         <ShineEffect />
         {children}
