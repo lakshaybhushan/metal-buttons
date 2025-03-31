@@ -1,8 +1,14 @@
 import { CodeBlockCommand } from "@/components/ui/code-block-command";
-import { bunCommand, npmCommand, pnpmCommand, yarnCommand } from "@/lib/utils";
+import {
+  bunCommand,
+  EXAMPLE_URL,
+  npmCommand,
+  pnpmCommand,
+  yarnCommand,
+} from "@/lib/utils";
 import { MetalButton } from "@/registry/metal-button/metal-button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import { OpenInV0Button } from "@/components/ui/open-in-v0";
 
 export default function Home() {
   return (
@@ -18,8 +24,8 @@ export default function Home() {
 
       <section className="mt-2 flex max-w-2xl flex-col">
         <div className="relative mt-4 flex min-h-[350px] w-full items-center justify-center rounded-xl border-2 bg-gray-100 p-10">
-          <div className="absolute top-0 right-0 m-4">
-            {/* <OpenInV0Button url={EXAMPLE_URL} /> */}
+          <div className="absolute top-0 right-0 m-4 shadow-xl shadow-gray-300">
+            <OpenInV0Button url={EXAMPLE_URL} />
           </div>
 
           <MetalButton variant="default" className="w-fit">
@@ -56,9 +62,7 @@ export default function Home() {
             </TabsContent>
 
             <TabsContent value="manual" className="mt-4">
-              <div className="rounded-xl">
-
-              </div>
+              <div className="rounded-xl"></div>
             </TabsContent>
           </Tabs>
         </div>
