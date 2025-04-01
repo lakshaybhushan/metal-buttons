@@ -2,6 +2,7 @@ import { ComponentPreview } from "../components/component-preview";
 import { ComponentSource } from "../components/component-source";
 import { CodeBlockCommand } from "../components/code-block-command";
 import MetalButtonSource from "../lib/metal-source.mdx";
+import { GithubBtn } from "@/components/github-btn";
 import {
   npmCommand,
   yarnCommand,
@@ -18,7 +19,7 @@ import {
 
 ### A beautiful, customizable metal button component with tactile feedback!
 
-##### by [lakshaybhushan](https://x.com/blakssh)
+##### By [lakshaybhushan](https://x.com/blakssh) :)
 
 <ComponentPreview name="metal-button-demo">
 ```tsx 
@@ -26,13 +27,8 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonDemo() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="default">Default</MetalButton>
-      <MetalButton variant="primary">Primary</MetalButton>
-      <MetalButton variant="success">Success</MetalButton>
-      <MetalButton variant="error">Error</MetalButton>
-      <MetalButton variant="gold">Gold</MetalButton>
-      <MetalButton variant="bronze">Bronze</MetalButton>
     </div>
   );
 }
@@ -44,7 +40,7 @@ export function MetalButtonDemo() {
 <Tabs defaultValue="cli">
 
 <TabsList>
-  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="cli" className="cursor-pointer">CLI</TabsTrigger>
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 <TabsContent value="cli">
@@ -88,9 +84,9 @@ import { MetalButton } from "@/components/metal-button";
 ```tsx 
 import { MetalButton } from "@/components/metal-button";
 
-export function MetalButtonDemo() {
+export function MetalButtonDefault() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="default">Default</MetalButton>
     </div>
   );
@@ -106,7 +102,7 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonPrimary() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="primary">Primary</MetalButton>
     </div>
   );
@@ -122,7 +118,7 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonSuccess() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="success">Success</MetalButton>
     </div>
   );
@@ -138,7 +134,7 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonError() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="error">Error</MetalButton>
     </div>
   );
@@ -154,7 +150,7 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonGold() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="gold">Gold</MetalButton>
     </div>
   );
@@ -170,10 +166,12 @@ import { MetalButton } from "@/components/metal-button";
 
 export function MetalButtonBronze() {
   return (
-    <div>
+    <div className="flex min-h-screen items-center justify-center">
       <MetalButton variant="bronze">Bronze</MetalButton>
     </div>
   );
 }
 ```
 </ComponentPreview>
+
+<GithubBtn />

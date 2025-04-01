@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">Metal Buttons</h1>
 
-## Getting Started
+<p align="center">
 
-First, run the development server:
+<img src ="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white">
+<img src ="https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white">
+<img src ="https://img.shields.io/badge/TailwindCSS-000000.svg?style=for-the-badge&logo=TailwindCSS&logoColor=white">
+<img src ="https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+</p>
+
+<a href="https://metal-buttons.lakshb.dev">
+  <img src="./app/opengraph-image.png" alt="Metal Buttons" />
+</a>
+
+## Installation
+
+For npm or yarn:
+
+```sh
+npx shadcn@latest add https://button.lakshb.dev/r/metal-button.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For pnpm:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm dlx shadcn@latest add https://button.lakshb.dev/r/metal-button.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+For bun:
 
-## Learn More
+```sh
+bunx --bun shadcn@latest add https://button.lakshb.dev/r/metal-button.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+import { MetalButton } from "@/components/metal-button";
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```tsx
+<MetalButton variant="default">Default</MetalButton>
+```
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+If you have any suggestions or improvements, please create an issue or a pull request. I'll try to respond to all issues and pull requests.
+
+## Support
+
+If you like this and other projects, you can sponsor me on [GitHub](https://github.com/sponsors/lakshaybhushan) or
+[buying me a coffee](https://www.buymeacoffee.com/lakshaybhushan).
+
+<a href="https://www.buymeacoffee.com/lakshaybhushan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" width="200"></a>

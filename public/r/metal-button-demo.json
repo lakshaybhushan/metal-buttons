@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/example/metal-button-demo.tsx",
-      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonDemo() {\n  return (\n    <div>\n      <MetalButton variant=\"default\">Default</MetalButton>\n    </div>\n  );\n}\n",
+      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonDemo() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center\">\n      <MetalButton variant=\"default\">Default</MetalButton>\n    </div>\n  );\n}\n",
       "type": "registry:page",
       "target": "components/metal-button-demo.tsx"
     }

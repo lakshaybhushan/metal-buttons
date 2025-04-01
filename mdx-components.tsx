@@ -41,7 +41,7 @@ const otherComponents: MDXComponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
-        "inline-block bg-gradient-to-b from-black to-gray-500 bg-clip-text pr-1 text-left text-8xl font-bold tracking-tighter text-transparent",
+        "inline-block bg-gradient-to-b from-black to-gray-500 bg-clip-text pr-1 text-left text-6xl font-bold tracking-tighter text-transparent md:text-8xl",
         className,
       )}
       {...props}
@@ -59,7 +59,7 @@ const otherComponents: MDXComponents = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "max-w-lg pt-2 text-left text-2xl text-gray-500",
+        "max-w-lg pt-2 text-left text-xl text-gray-500 md:text-2xl",
         className,
       )}
       {...props}
@@ -68,7 +68,7 @@ const otherComponents: MDXComponents = {
   h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
-        "font-heading mt-4 scroll-m-20 text-lg font-semibold tracking-tight",
+        "font-heading mt-8 scroll-m-20 font-semibold tracking-tight md:text-lg",
         className,
       )}
       {...props}
@@ -77,7 +77,7 @@ const otherComponents: MDXComponents = {
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn(
-        "mt-4 scroll-m-20 text-lg font-medium tracking-tight text-gray-500",
+        "mt-2 scroll-m-20 text-lg font-medium tracking-tight text-gray-500 md:mt-4",
         className,
       )}
       {...props}
@@ -94,7 +94,7 @@ const otherComponents: MDXComponents = {
   ),
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <CustomLink
-      className={cn("font-medium underline underline-offset-4", className)}
+      className={cn("underline underline-offset-4", className)}
       {...props}
     />
   ),
@@ -193,15 +193,6 @@ const otherComponents: MDXComponents = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn("font-mono text-sm text-white", className)}
-      {...props}
-    />
-  ),
-  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn(
-        "bg-card text-card-foreground hover:bg-muted/50 flex w-full flex-col items-center rounded-xl border p-6 shadow transition-colors sm:p-10",
-        className,
-      )}
       {...props}
     />
   ),

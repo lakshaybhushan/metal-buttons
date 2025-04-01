@@ -56,7 +56,6 @@ export function CodeBlockCommand({
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
-          console.log("value", value, packageManager);
           setConfig({
             ...config,
             packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
@@ -65,8 +64,7 @@ export function CodeBlockCommand({
       >
         <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5">
           <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1">
-            {/* @eslint-disable-next-line */}
-            {Object.entries(tabs).map(([key, value]) => {
+            {Object.entries(tabs).map(([key]) => {
               return (
                 <TabsTrigger
                   key={key}

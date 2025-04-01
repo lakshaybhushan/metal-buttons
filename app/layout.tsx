@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "jotai";
 import "./globals.css";
 import { BlurBottom } from "@/components/blur-bottom";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

@@ -7,7 +7,22 @@ import { ComponentWrapper } from "@/components/component-wrapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeBlockWithCopy } from "@/components/code-block-with-copy";
 
-const Index: Record<string, any> = {
+interface ComponentEntry {
+  name: string;
+  description: string;
+  type: string;
+  author: string;
+  registryDependencies: string[];
+  files: {
+    path: string;
+    type: string;
+    target: string;
+  }[];
+  component: React.LazyExoticComponent<React.ComponentType>;
+  meta: undefined;
+}
+
+const Index: Record<string, ComponentEntry> = {
   "metal-button-demo": {
     name: "metal-button-demo",
     description: "A basic example of the metal button component",
@@ -168,7 +183,6 @@ const Index: Record<string, any> = {
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
-  align?: "center" | "start" | "end";
   preview?: boolean;
 }
 
@@ -176,7 +190,6 @@ export function ComponentPreview({
   name,
   children,
   className,
-  align = "center",
   preview = false,
   ...props
 }: ComponentPreviewProps) {
@@ -235,11 +248,12 @@ export function ComponentPreview({
               fallback={
                 <div className="text-muted-foreground flex items-center text-sm">
                   <Loader2 className="mr-2 size-4 animate-spin" />
-                  Loading...
                 </div>
               }
             >
-              {Preview}
+              <div className="[&>div]:!block [&>div]:!min-h-0 [&>div]:!flex-none">
+                {Preview}
+              </div>
             </React.Suspense>
           </ComponentWrapper>
         </TabsContent>

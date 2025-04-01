@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/example/metal-button-bronze.tsx",
-      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonBronze() {\n  return (\n    <div>\n      <MetalButton variant=\"bronze\">Bronze</MetalButton>\n    </div>\n  );\n}\n",
+      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonBronze() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center\">\n      <MetalButton variant=\"bronze\">Bronze</MetalButton>\n    </div>\n  );\n}\n",
       "type": "registry:ui",
       "target": "components/metal-button-bronze.tsx"
     }
