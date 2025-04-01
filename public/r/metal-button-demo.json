@@ -5,9 +5,7 @@
   "title": "Metal Button Demo",
   "author": "Lakshay Bhushan",
   "description": "A basic example of the metal button component",
-  "registryDependencies": [
-    "https://button.lakshb.dev/r/metal-button.json"
-  ],
+  "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
   "files": [
     {
       "path": "registry/example/metal-button-demo.tsx",

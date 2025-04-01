@@ -5,7 +5,6 @@ import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ClipboardIcon } from "lucide-react";
 import { NpmCommands } from "@/types/unist";
 
-// import { Event, trackEvent } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "@/components/ui/button";
 import {
@@ -13,12 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-interface EventOptions {
-  name: string;
-  properties?: Record<string, unknown>;
-}
+} from "@/components/dropdown-menu";
 
 interface CopyButtonProps extends ButtonProps {
   value: string;

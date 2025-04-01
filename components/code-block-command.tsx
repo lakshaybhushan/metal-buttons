@@ -1,6 +1,6 @@
 "use client";
 
-import { copyToClipboardWithMeta } from "@/components/ui/copy-button";
+import { copyToClipboardWithMeta } from "@/components/copy-button";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useConfig } from "@/hooks/config";
@@ -71,7 +71,7 @@ export function CodeBlockCommand({
                 <TabsTrigger
                   key={key}
                   value={key}
-                  className="rounded-none border-b border-transparent bg-transparent p-0 pb-1.5 font-mono text-zinc-400 data-[state=active]:border-b-zinc-50 data-[state=active]:bg-transparent data-[state=active]:text-zinc-50 cursor-pointer"
+                  className="cursor-pointer rounded-none border-b border-transparent bg-transparent p-0 pb-1.5 font-mono text-zinc-400 data-[state=active]:border-b-zinc-50 data-[state=active]:bg-transparent data-[state=active]:text-zinc-50"
                 >
                   {key}
                 </TabsTrigger>
