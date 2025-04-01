@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-button-gold",
+  "type": "registry:ui",
+  "title": "Metal Button Gold",
+  "author": "Lakshay Bhushan",
+  "description": "A shadcn/ui based button but it's made of metal",
+  "files": [
+    {
+      "path": "registry/example/metal-button-gold.tsx",
+      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonGold() {\n  return (\n    <div>\n      <MetalButton variant=\"gold\">Gold</MetalButton>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/metal-button-gold.tsx"
+    }
+  ]
+}

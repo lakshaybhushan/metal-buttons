@@ -52,7 +52,7 @@ export function CodeBlockCommand({
   }
 
   return (
-    <div className="relative max-h-[650px] overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-950 text-white dark:bg-zinc-900">
+    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-950 text-white dark:bg-zinc-900">
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
@@ -97,7 +97,7 @@ export function CodeBlockCommand({
       <Button
         size="icon"
         variant="ghost"
-        className="absolute top-2 right-2.5 z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
+        className="absolute top-2 right-2.5 z-10 h-6 w-6 cursor-pointer rounded-md text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50 [&_svg]:h-3 [&_svg]:w-3"
         onClick={copyCommand}
       >
         <span className="sr-only">Copy</span>

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-button-primary",
+  "type": "registry:ui",
+  "title": "Metal Button Primary",
+  "author": "Lakshay Bhushan",
+  "description": "A shadcn/ui based button but it's made of metal",
+  "files": [
+    {
+      "path": "registry/example/metal-button-primary.tsx",
+      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonPrimary() {\n  return (\n    <div>\n      <MetalButton variant=\"primary\">Primary</MetalButton>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/metal-button-primary.tsx"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import { MetalButton } from "@/components/metal-button";
 
-export function MetalButtonDemo() {
+export function MetalButtonBronze() {
   return (
     <div>
-      <MetalButton variant="default">Default</MetalButton>
+      <MetalButton variant="bronze">Bronze</MetalButton>
     </div>
   );
 }

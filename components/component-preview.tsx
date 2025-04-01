@@ -34,6 +34,136 @@ const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "metal-button-primary": {
+    name: "metal-button-primary",
+    description: "Primary variant of the metal button component",
+    type: "registry:page",
+    author: "Lakshay Bhushan",
+    registryDependencies: ["https://button.lakshb.dev/r/metal-button.json"],
+    files: [
+      {
+        path: "registry/example/metal-button-primary.tsx",
+        type: "registry:page",
+        target: "components/metal-button-primary.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      try {
+        const mod = await import("@/registry/example/metal-button-primary");
+        return { default: mod.MetalButtonPrimary };
+      } catch (error) {
+        console.error("Error loading component:", error);
+        return {
+          default: () => <div>Error loading component</div>,
+        };
+      }
+    }),
+    meta: undefined,
+  },
+  "metal-button-success": {
+    name: "metal-button-success",
+    description: "Success variant of the metal button component",
+    type: "registry:page",
+    author: "Lakshay Bhushan",
+    registryDependencies: ["https://button.lakshb.dev/r/metal-button.json"],
+    files: [
+      {
+        path: "registry/example/metal-button-success.tsx",
+        type: "registry:page",
+        target: "components/metal-button-success.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      try {
+        const mod = await import("@/registry/example/metal-button-success");
+        return { default: mod.MetalButtonSuccess };
+      } catch (error) {
+        console.error("Error loading component:", error);
+        return {
+          default: () => <div>Error loading component</div>,
+        };
+      }
+    }),
+    meta: undefined,
+  },
+  "metal-button-error": {
+    name: "metal-button-error",
+    description: "Error variant of the metal button component",
+    type: "registry:page",
+    author: "Lakshay Bhushan",
+    registryDependencies: ["https://button.lakshb.dev/r/metal-button.json"],
+    files: [
+      {
+        path: "registry/example/metal-button-error.tsx",
+        type: "registry:page",
+        target: "components/metal-button-error.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      try {
+        const mod = await import("@/registry/example/metal-button-error");
+        return { default: mod.MetalButtonError };
+      } catch (error) {
+        console.error("Error loading component:", error);
+        return {
+          default: () => <div>Error loading component</div>,
+        };
+      }
+    }),
+    meta: undefined,
+  },
+  "metal-button-gold": {
+    name: "metal-button-gold",
+    description: "Gold variant of the metal button component",
+    type: "registry:page",
+    author: "Lakshay Bhushan",
+    registryDependencies: ["https://button.lakshb.dev/r/metal-button.json"],
+    files: [
+      {
+        path: "registry/example/metal-button-gold.tsx",
+        type: "registry:page",
+        target: "components/metal-button-gold.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      try {
+        const mod = await import("@/registry/example/metal-button-gold");
+        return { default: mod.MetalButtonGold };
+      } catch (error) {
+        console.error("Error loading component:", error);
+        return {
+          default: () => <div>Error loading component</div>,
+        };
+      }
+    }),
+    meta: undefined,
+  },
+  "metal-button-bronze": {
+    name: "metal-button-bronze",
+    description: "Bronze variant of the metal button component",
+    type: "registry:page",
+    author: "Lakshay Bhushan",
+    registryDependencies: ["https://button.lakshb.dev/r/metal-button.json"],
+    files: [
+      {
+        path: "registry/example/metal-button-bronze.tsx",
+        type: "registry:page",
+        target: "components/metal-button-bronze.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      try {
+        const mod = await import("@/registry/example/metal-button-bronze");
+        return { default: mod.MetalButtonBronze };
+      } catch (error) {
+        console.error("Error loading component:", error);
+        return {
+          default: () => <div>Error loading component</div>,
+        };
+      }
+    }),
+    meta: undefined,
+  },
 };
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {

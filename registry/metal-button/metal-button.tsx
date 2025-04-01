@@ -74,6 +74,7 @@ export const MetalButton = React.forwardRef<
   MetalButtonProps
 >(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const buttonProps = {
     ...props,
@@ -94,7 +95,13 @@ export const MetalButton = React.forwardRef<
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsPressed(false);
+    setIsHovered(false);
     buttonProps.onMouseLeave?.(e);
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsHovered(true);
+    buttonProps.onMouseEnter?.(e);
   };
 
   const ShineEffect = () => {
@@ -124,8 +131,10 @@ export const MetalButton = React.forwardRef<
           ? "translateY(2.5px) scale(0.99)"
           : "translateY(0) scale(1)",
         boxShadow: isPressed
-          ? "0 1px 3px rgba(0, 0, 0, 0.2)"
-          : "0 5px 15px rgba(0, 0, 0, 0.15)",
+          ? "0 1px 2px rgba(0, 0, 0, 0.15)"
+          : isHovered
+            ? "0 4px 12px rgba(0, 0, 0, 0.12)"
+            : "0 3px 8px rgba(0, 0, 0, 0.08)",
         transition: transitionStyle,
         transformOrigin: "center center",
       }}
@@ -138,6 +147,7 @@ export const MetalButton = React.forwardRef<
         style={{
           transition: transitionStyle,
           transformOrigin: "center center",
+          filter: isHovered && !isPressed ? "brightness(1.05)" : "none",
         }}
       ></div>
 
@@ -155,13 +165,18 @@ export const MetalButton = React.forwardRef<
           transform: isPressed ? "scale(0.97)" : "scale(1)",
           transition: transitionStyle,
           transformOrigin: "center center",
+          filter: isHovered && !isPressed ? "brightness(1.02)" : "none",
         }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
       >
         <ShineEffect />
         {buttonText}
+        {isHovered && !isPressed && (
+          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/5" />
+        )}
       </button>
     </div>
   );

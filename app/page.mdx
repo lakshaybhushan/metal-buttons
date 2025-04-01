@@ -1,10 +1,88 @@
 import { ComponentPreview } from "../components/component-preview";
+import { ComponentSource } from "../components/component-source";
+import { CodeBlockCommand } from "../components/code-block-command";
+import MetalButtonSource from "../lib/metal-source.mdx";
+import {
+  npmCommand,
+  yarnCommand,
+  pnpmCommand,
+  bunCommand,
+  metalButtonSourceCode,
+} from "../lib/utils";
 
 # Metal
 
 <br />
 
 # Buttons
+
+### A beautiful, customizable metal button component with tactile feedback!
+
+##### by [lakshaybhushan](https://x.com/blakssh)
+
+<ComponentPreview name="metal-button-demo">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonDemo() {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <MetalButton variant="default">Default</MetalButton>
+      <MetalButton variant="primary">Primary</MetalButton>
+      <MetalButton variant="success">Success</MetalButton>
+      <MetalButton variant="error">Error</MetalButton>
+      <MetalButton variant="gold">Gold</MetalButton>
+      <MetalButton variant="bronze">Bronze</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+<CodeBlockCommand
+  __npmCommand__={npmCommand}
+  __yarnCommand__={yarnCommand}
+  __pnpmCommand__={pnpmCommand}
+  __bunCommand__={bunCommand}
+/>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+#### Copy and paste the following code into your project.
+
+<ComponentSource name="metal-button">
+  <MetalButtonSource />
+</ComponentSource>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { MetalButton } from "@/components/metal-button";
+```
+
+```tsx
+<MetalButton variant="success">Button</MetalButton>
+```
+
+## Examples
+
+#### Default
 
 <ComponentPreview name="metal-button-demo">
 ```tsx 
@@ -13,11 +91,89 @@ import { MetalButton } from "@/components/metal-button";
 export function MetalButtonDemo() {
   return (
     <div>
-      <MetalButton variant="default">Button</MetalButton>
+      <MetalButton variant="default">Default</MetalButton>
     </div>
   );
 }
 ```
-</ComponentPreview
+</ComponentPreview>
 
->
+#### Primary
+
+<ComponentPreview name="metal-button-primary">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonPrimary() {
+  return (
+    <div>
+      <MetalButton variant="primary">Primary</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>
+
+#### Success
+
+<ComponentPreview name="metal-button-success">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonSuccess() {
+  return (
+    <div>
+      <MetalButton variant="success">Success</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>
+
+#### Error
+
+<ComponentPreview name="metal-button-error">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonError() {
+  return (
+    <div>
+      <MetalButton variant="error">Error</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>
+
+#### Gold
+
+<ComponentPreview name="metal-button-gold">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonGold() {
+  return (
+    <div>
+      <MetalButton variant="gold">Gold</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>
+
+#### Bronze
+
+<ComponentPreview name="metal-button-bronze">
+```tsx 
+import { MetalButton } from "@/components/metal-button";
+
+export function MetalButtonBronze() {
+  return (
+    <div>
+      <MetalButton variant="bronze">Bronze</MetalButton>
+    </div>
+  );
+}
+```
+</ComponentPreview>

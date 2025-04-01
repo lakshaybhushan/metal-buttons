@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "jotai";
 import "./globals.css";
-
+import { BlurBottom } from "@/components/blur-bottom";
+import LenisScrollProvider from "@/provider/lenis-provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,9 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} mx-auto my-8 max-w-[600px] px-4 antialiased md:my-16 md:max-w-[800px]`}
+        className={`${geistSans.variable} ${geistMono.variable} mx-auto my-8 max-w-[600px] px-4 antialiased md:my-16 md:max-w-[720px]`}
       >
-        <Provider>{children}</Provider>
+        <LenisScrollProvider>
+          <Provider>
+            {children}
+            <BlurBottom />
+          </Provider>
+        </LenisScrollProvider>
       </body>
     </html>
   );

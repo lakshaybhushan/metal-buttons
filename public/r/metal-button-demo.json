@@ -2,14 +2,16 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "metal-button-demo",
   "type": "registry:page",
-  "title": "Metal Button Demo",
+  "title": "Metal Button Basic Example",
   "author": "Lakshay Bhushan",
   "description": "A basic example of the metal button component",
-  "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+  "registryDependencies": [
+    "https://button.lakshb.dev/r/metal-button.json"
+  ],
   "files": [
     {
       "path": "registry/example/metal-button-demo.tsx",
-      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport default function MetalButtonDemo() {\n  return (\n    <div>\n      <MetalButton>Hello</MetalButton>\n    </div>\n  );\n}\n",
+      "content": "import { MetalButton } from \"@/components/metal-button\";\n\nexport function MetalButtonDemo() {\n  return (\n    <div>\n      <MetalButton variant=\"default\">Default</MetalButton>\n    </div>\n  );\n}\n",
       "type": "registry:page",
       "target": "components/metal-button-demo.tsx"
     }

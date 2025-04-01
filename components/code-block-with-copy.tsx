@@ -31,7 +31,7 @@ export function CodeBlockWithCopy({ children }: CodeBlockWithCopyProps) {
         <CopyButton
           value={codeContent}
           variant="ghost"
-          className="size-8 bg-zinc-800/80 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50"
+          className="size-8"
         />
       </div>
       {children}
