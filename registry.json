@@ -22,7 +22,9 @@
       "type": "registry:ui",
       "author": "Lakshay Bhushan",
       "title": "Metal Button Primary",
-      "description": "A shadcn/ui based button but it's made of metal",
+      "description": "A shadcn/ui based button but it's made of metal and it's blue",
+      "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+
       "files": [
         {
           "path": "registry/example/metal-button-primary.tsx",
@@ -36,7 +38,9 @@
       "type": "registry:ui",
       "author": "Lakshay Bhushan",
       "title": "Metal Button Success",
-      "description": "A shadcn/ui based button but it's made of metal",
+      "description": "A shadcn/ui based button but it's made of metal and it's green",
+      "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+
       "files": [
         {
           "path": "registry/example/metal-button-success.tsx",
@@ -50,7 +54,9 @@
       "type": "registry:ui",
       "author": "Lakshay Bhushan",
       "title": "Metal Button Error",
-      "description": "A shadcn/ui based button but it's made of metal",
+      "description": "A shadcn/ui based button but it's made of metal and it's red",
+      "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+
       "files": [
         {
           "path": "registry/example/metal-button-error.tsx",
@@ -64,7 +70,9 @@
       "type": "registry:ui",
       "author": "Lakshay Bhushan",
       "title": "Metal Button Gold",
-      "description": "A shadcn/ui based button but it's made of metal",
+      "description": "A shadcn/ui based button but it's made of gold metal",
+      "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+
       "files": [
         {
           "path": "registry/example/metal-button-gold.tsx",
@@ -78,7 +86,9 @@
       "type": "registry:ui",
       "author": "Lakshay Bhushan",
       "title": "Metal Button Bronze",
-      "description": "A shadcn/ui based button but it's made of metal",
+      "description": "A shadcn/ui based button but it's made of bronze metal",
+      "registryDependencies": ["https://button.lakshb.dev/r/metal-button.json"],
+
       "files": [
         {
           "path": "registry/example/metal-button-bronze.tsx",

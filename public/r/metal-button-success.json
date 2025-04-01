@@ -4,7 +4,10 @@
   "type": "registry:ui",
   "title": "Metal Button Success",
   "author": "Lakshay Bhushan",
-  "description": "A shadcn/ui based button but it's made of metal",
+  "description": "A shadcn/ui based button but it's made of metal and it's green",
+  "registryDependencies": [
+    "https://button.lakshb.dev/r/metal-button.json"
+  ],
   "files": [
     {
       "path": "registry/example/metal-button-success.tsx",

@@ -27,44 +27,44 @@ const colorVariants: Record<
   }
 > = {
   default: {
-    outer: "bg-gradient-to-t from-[#A0A0A0] to-[#000]",
+    outer: "bg-gradient-to-b from-[#000] to-[#A0A0A0]",
     inner: "bg-gradient-to-b from-[#FAFAFA] via-[#3E3E3E] to-[#E5E5E5]",
     button: "bg-gradient-to-b from-[#B9B9B9] to-[#969696]",
     textColor: "text-white",
     textShadow: "[text-shadow:_0_-1px_0_rgb(80_80_80_/_100%)]",
   },
   primary: {
-    outer: "bg-gradient-to-t from-[#90C2FF] to-[#0051B4]",
-    inner: "bg-gradient-to-b from-[#D5F1FF] via-[#006AFF] to-[#CBF4FF]",
-    button: "bg-gradient-to-b from-[#0080FF] to-[#7BC6FF]",
+    outer: "bg-gradient-to-b from-[#0051B4] to-[#90C2FF]",
+    inner: "bg-gradient-to-b from-[#C4EBFF] via-[#0B3F89] to-[#A6DDFB]",
+    button: "bg-gradient-to-b from-[#96C6EA] to-[#2D7CCA]",
     textColor: "text-[#FFF7F0]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
   },
   success: {
-    outer: "bg-gradient-to-t from-[#7CCB9B] to-[#005A43]",
-    inner: "bg-gradient-to-b from-[#C3FFE6] via-[#006056] to-[#8CFFDB]",
-    button: "bg-gradient-to-b from-[#009472] to-[#50C2A0]",
+    outer: "bg-gradient-to-b from-[#005A43] to-[#7CCB9B]",
+    inner: "bg-gradient-to-b from-[#E5F8F0] via-[#00352F] to-[#D1F0E6]",
+    button: "bg-gradient-to-b from-[#9ADBC8] to-[#3E8F7C]",
     textColor: "text-[#FFF7F0]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(6_78_59_/_100%)]",
   },
   error: {
-    outer: "bg-gradient-to-t from-[#FF8E90] to-[#5A0000]",
-    inner: "bg-gradient-to-b from-[#FFDEDE] via-[#A00003] to-[#FFAFAF]",
-    button: "bg-gradient-to-b from-[#DD0E11] to-[#CD4C4E]",
+    outer: "bg-gradient-to-b from-[#5A0000] to-[#FFAEB0]",
+    inner: "bg-gradient-to-b from-[#FFDEDE] via-[#680002] to-[#FFE9E9]",
+    button: "bg-gradient-to-b from-[#A45253] to-[#F08D8F]",
     textColor: "text-[#FFF7F0]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(146_64_14_/_100%)]",
   },
   gold: {
-    outer: "bg-gradient-to-t from-[#D9B100] to-[#D7B700]",
-    inner: "bg-gradient-to-b from-[#FFF9AA] via-[#D5A300] to-[#FFD000]",
-    button: "bg-gradient-to-b from-[#E1B000] to-[#FFDE67]",
-    textColor: "text-white",
+    outer: "bg-gradient-to-b from-[#917100] to-[#EAD98F]",
+    inner: "bg-gradient-to-b from-[#FFFDDD] via-[#856807] to-[#FFF1B3]",
+    button: "bg-gradient-to-b from-[#FFEBA1] to-[#9B873F]",
+    textColor: "text-[#FFFDE5]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(178_140_2_/_100%)]",
   },
   bronze: {
-    outer: "bg-gradient-to-t from-[#FFB777] to-[#7F3C01]",
-    inner: "bg-gradient-to-b from-[#FFDEC1] via-[#8F4300] to-[#FFA95D]",
-    button: "bg-gradient-to-b from-[#B25700] to-[#FFBC7B]",
+    outer: "bg-gradient-to-b from-[#864813] to-[#E9B486]",
+    inner: "bg-gradient-to-b from-[#EDC5A1] via-[#5F2D01] to-[#FFDEC1]",
+    button: "bg-gradient-to-b from-[#FFE3C9] to-[#A36F3D]",
     textColor: "text-[#FFF7F0]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(124_45_18_/_100%)]",
   },
@@ -76,6 +76,12 @@ export const MetalButton = React.forwardRef<
 >(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
+  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if device is touch-enabled
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   const buttonProps = {
     ...props,
@@ -101,8 +107,26 @@ export const MetalButton = React.forwardRef<
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setIsHovered(true);
+    if (!isTouchDevice) {
+      setIsHovered(true);
+    }
     buttonProps.onMouseEnter?.(e);
+  };
+
+  // Touch event handlers
+  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(true);
+    buttonProps.onTouchStart?.(e);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(false);
+    buttonProps.onTouchEnd?.(e);
+  };
+
+  const handleTouchCancel = (e: React.TouchEvent<HTMLButtonElement>) => {
+    setIsPressed(false);
+    buttonProps.onTouchCancel?.(e);
   };
 
   const ShineEffect = () => {
@@ -133,7 +157,7 @@ export const MetalButton = React.forwardRef<
           : "translateY(0) scale(1)",
         boxShadow: isPressed
           ? "0 1px 2px rgba(0, 0, 0, 0.15)"
-          : isHovered
+          : isHovered && !isTouchDevice
             ? "0 4px 12px rgba(0, 0, 0, 0.12)"
             : "0 3px 8px rgba(0, 0, 0, 0.08)",
         transition: transitionStyle,
@@ -148,7 +172,10 @@ export const MetalButton = React.forwardRef<
         style={{
           transition: transitionStyle,
           transformOrigin: "center center",
-          filter: isHovered && !isPressed ? "brightness(1.05)" : "none",
+          filter:
+            isHovered && !isPressed && !isTouchDevice
+              ? "brightness(1.05)"
+              : "none",
         }}
       ></div>
 
@@ -166,16 +193,22 @@ export const MetalButton = React.forwardRef<
           transform: isPressed ? "scale(0.97)" : "scale(1)",
           transition: transitionStyle,
           transformOrigin: "center center",
-          filter: isHovered && !isPressed ? "brightness(1.02)" : "none",
+          filter:
+            isHovered && !isPressed && !isTouchDevice
+              ? "brightness(1.02)"
+              : "none",
         }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchCancel}
       >
         <ShineEffect />
         {buttonText}
-        {isHovered && !isPressed && (
+        {isHovered && !isPressed && !isTouchDevice && (
           <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/5" />
         )}
       </button>
