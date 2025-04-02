@@ -69,6 +69,71 @@ const colorVariants: Record<
   },
 };
 
+const metalButtonVariants = (
+  variant: ColorVariant = "default",
+  isPressed: boolean,
+  isHovered: boolean,
+  isTouchDevice: boolean,
+) => {
+  const colors = colorVariants[variant];
+  const transitionStyle = "all 250ms cubic-bezier(0.1, 0.4, 0.2, 1)";
+
+  return {
+    wrapper: cn(
+      "relative inline-flex transform-gpu rounded-full p-[1.25px] will-change-transform",
+      colors.outer,
+    ),
+    wrapperStyle: {
+      transform: isPressed
+        ? "translateY(2.5px) scale(0.99)"
+        : "translateY(0) scale(1)",
+      boxShadow: isPressed
+        ? "0 1px 2px rgba(0, 0, 0, 0.15)"
+        : isHovered && !isTouchDevice
+          ? "0 4px 12px rgba(0, 0, 0, 0.12)"
+          : "0 3px 8px rgba(0, 0, 0, 0.08)",
+      transition: transitionStyle,
+      transformOrigin: "center center",
+    },
+    inner: cn(
+      "absolute inset-[1px] transform-gpu rounded-full will-change-transform",
+      colors.inner,
+    ),
+    innerStyle: {
+      transition: transitionStyle,
+      transformOrigin: "center center",
+      filter:
+        isHovered && !isPressed && !isTouchDevice ? "brightness(1.05)" : "none",
+    },
+    button: cn(
+      "relative z-10 m-[2.5px] inline-flex h-11 transform-gpu cursor-pointer items-center justify-center overflow-hidden rounded-full px-6 pt-4 pb-5 text-2xl leading-none font-bold will-change-transform outline-none",
+      colors.button,
+      colors.textColor,
+      colors.textShadow,
+    ),
+    buttonStyle: {
+      transform: isPressed ? "scale(0.97)" : "scale(1)",
+      transition: transitionStyle,
+      transformOrigin: "center center",
+      filter:
+        isHovered && !isPressed && !isTouchDevice ? "brightness(1.02)" : "none",
+    },
+  };
+};
+
+const ShineEffect = ({ isPressed }: { isPressed: boolean }) => {
+  return (
+    <div
+      className={cn(
+        "pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-full transition-opacity duration-300",
+        isPressed ? "opacity-20" : "opacity-0",
+      )}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
+    </div>
+  );
+};
+
 export const MetalButton = React.forwardRef<
   HTMLButtonElement,
   MetalButtonProps
@@ -78,137 +143,62 @@ export const MetalButton = React.forwardRef<
   const [isTouchDevice, setIsTouchDevice] = React.useState(false);
 
   React.useEffect(() => {
-    // Check if device is touch-enabled
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
 
-  const buttonProps = {
-    ...props,
-    name: props.name || "button",
-  };
-
   const buttonText = children || "Button";
+  const variants = metalButtonVariants(
+    variant,
+    isPressed,
+    isHovered,
+    isTouchDevice,
+  );
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleInternalMouseDown = () => {
     setIsPressed(true);
-    buttonProps.onMouseDown?.(e);
   };
-
-  const handleMouseUp = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleInternalMouseUp = () => {
     setIsPressed(false);
-    buttonProps.onMouseUp?.(e);
   };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleInternalMouseLeave = () => {
     setIsPressed(false);
     setIsHovered(false);
-    buttonProps.onMouseLeave?.(e);
   };
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleInternalMouseEnter = () => {
     if (!isTouchDevice) {
       setIsHovered(true);
     }
-    buttonProps.onMouseEnter?.(e);
   };
-
-  // Touch event handlers
-  const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+  const handleInternalTouchStart = () => {
     setIsPressed(true);
-    buttonProps.onTouchStart?.(e);
   };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLButtonElement>) => {
+  const handleInternalTouchEnd = () => {
     setIsPressed(false);
-    buttonProps.onTouchEnd?.(e);
   };
-
-  const handleTouchCancel = (e: React.TouchEvent<HTMLButtonElement>) => {
+  const handleInternalTouchCancel = () => {
     setIsPressed(false);
-    buttonProps.onTouchCancel?.(e);
   };
-
-  const ShineEffect = () => {
-    return (
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-full transition-opacity duration-300",
-          isPressed ? "opacity-20" : "opacity-0",
-        )}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
-      </div>
-    );
-  };
-
-  const transitionStyle = "all 250ms cubic-bezier(0.1, 0.4, 0.2, 1)";
-  const colors = colorVariants[variant];
 
   return (
-    <div
-      className={cn(
-        "relative inline-flex transform-gpu rounded-full p-[1.25px] will-change-transform",
-        colors.outer,
-      )}
-      style={{
-        transform: isPressed
-          ? "translateY(2.5px) scale(0.99)"
-          : "translateY(0) scale(1)",
-        boxShadow: isPressed
-          ? "0 1px 2px rgba(0, 0, 0, 0.15)"
-          : isHovered && !isTouchDevice
-            ? "0 4px 12px rgba(0, 0, 0, 0.12)"
-            : "0 3px 8px rgba(0, 0, 0, 0.08)",
-        transition: transitionStyle,
-        transformOrigin: "center center",
-      }}
-    >
-      <div
-        className={cn(
-          "absolute inset-[1px] transform-gpu rounded-full will-change-transform",
-          colors.inner,
-        )}
-        style={{
-          transition: transitionStyle,
-          transformOrigin: "center center",
-          filter:
-            isHovered && !isPressed && !isTouchDevice
-              ? "brightness(1.05)"
-              : "none",
-        }}
-      ></div>
-
+    <div className={variants.wrapper} style={variants.wrapperStyle}>
+      <div className={variants.inner} style={variants.innerStyle}></div>
       <button
         ref={ref}
-        className={cn(
-          "relative z-10 m-[2.5px] inline-flex h-11 transform-gpu cursor-pointer items-center justify-center overflow-hidden rounded-full p-6 text-2xl leading-none font-bold will-change-transform outline-none",
-          colors.button,
-          colors.textColor,
-          colors.textShadow,
-          className,
-        )}
-        {...buttonProps}
-        style={{
-          transform: isPressed ? "scale(0.97)" : "scale(1)",
-          transition: transitionStyle,
-          transformOrigin: "center center",
-          filter:
-            isHovered && !isPressed && !isTouchDevice
-              ? "brightness(1.02)"
-              : "none",
-        }}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onMouseEnter={handleMouseEnter}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchCancel}
+        className={cn(variants.button, className)}
+        style={variants.buttonStyle}
+        {...props}
+        onMouseDown={handleInternalMouseDown}
+        onMouseUp={handleInternalMouseUp}
+        onMouseLeave={handleInternalMouseLeave}
+        onMouseEnter={handleInternalMouseEnter}
+        onTouchStart={handleInternalTouchStart}
+        onTouchEnd={handleInternalTouchEnd}
+        onTouchCancel={handleInternalTouchCancel}
       >
-        <ShineEffect />
+        <ShineEffect isPressed={isPressed} />
         {buttonText}
         {isHovered && !isPressed && !isTouchDevice && (
-          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/5" />
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/5" />
         )}
       </button>
     </div>
