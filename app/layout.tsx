@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Provider } from "jotai";
 import "./globals.css";
 import { BlurBottom } from "@/components/blur-bottom";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script
+        src="https://cloud.umami.is/script.js"
+        defer
+        data-website-id="9b364e31-cb5d-453f-9c20-42c26c9d75b6"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} mx-auto my-8 max-w-[600px] px-4 antialiased md:my-16 md:max-w-[720px]`}
       >
