@@ -49,7 +49,7 @@ const colorVariants: Record<
   error: {
     outer: "bg-gradient-to-b from-[#5A0000] to-[#FFAEB0]",
     inner: "bg-gradient-to-b from-[#FFDEDE] via-[#680002] to-[#FFE9E9]",
-    button: "bg-gradient-to-b from-[#A45253] to-[#F08D8F]",
+    button: "bg-gradient-to-b from-[#F08D8F] to-[#A45253]",
     textColor: "text-[#FFF7F0]",
     textShadow: "[text-shadow:_0_-1px_0_rgb(146_64_14_/_100%)]",
   },
